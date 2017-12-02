@@ -1,19 +1,19 @@
 package jerimum
 
-import br.edu.ifrn.potigol.Potigolutil._
 
-case class Som(arquivo: Texto) {
+
+case class Som(var arquivo: String) {
   def toque: Unit = ()
 }
 
-case class Musica(arquivo: Texto) {
-  def toque(loop: Lógico = falso): Unit = {
+case class Musica(var arquivo: String) {
+  def toque(loop: Boolean = false): Unit = {
     //    Musica._musica = this
   }
-  def tocando: Lógico = falso
+  def tocando: Boolean = false
   def pare: Unit = ()
   def pause: Unit = ()
-  def pausado: Lógico = falso
+  def pausado: Boolean = false
 }
 
 object Musica {

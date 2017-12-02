@@ -2,13 +2,13 @@ package jerimum
 
 import java.awt.event.{ MouseEvent, MouseListener, MouseMotionListener }
 
-import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Lógico }
+
 
 object Mouse extends MouseListener with MouseMotionListener {
   private[this] val botoes = new Array[Boolean](4)
   private[this] var _x, _y: Int = 0
-  def BOTAO_ESQUERDO: Lógico = botoes(1)
-  def BOTAO_DIREITO: Lógico = botoes(3)
+  def BOTAO_ESQUERDO: Boolean = botoes(1)
+  def BOTAO_DIREITO: Boolean = botoes(3)
 
   private[this] def update(e: MouseEvent, valor: Boolean) = {
     val botao = e.getButton()
@@ -26,8 +26,8 @@ object Mouse extends MouseListener with MouseMotionListener {
     _y = e.getY()
   }
 
-  def x: Inteiro = _x
-  def y: Inteiro = _y
+  def x: Int = _x
+  def y: Int = _y
 
   override def mouseDragged(e: MouseEvent) = {}
   override def mouseClicked(e: MouseEvent) = {}
