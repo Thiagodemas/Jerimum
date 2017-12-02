@@ -2,10 +2,10 @@ package jerimum
 
 import java.awt.{ Canvas, Dimension }
 
-import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Texto }
+
 import javax.swing.JFrame
 
-class Tela(titulo: Texto, largura: Inteiro, altura: Inteiro) {
+class Tela(var titulo: String, var largura: Int, var altura: Int) {
   private[this] val dim = new Dimension(largura, altura)
   val canvas = new Canvas() {
     setPreferredSize(dim)
