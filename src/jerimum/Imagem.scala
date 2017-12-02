@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage
 
 import scala.util.{ Failure, Success, Try }
 
-import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Lista, Real, Texto }
+
 import javax.imageio.ImageIO
 import java.io.File
 
@@ -15,7 +15,7 @@ object Imagem {
   private[this] val imagens = collection.mutable.Map[String, Imagem]()
   private val listas = collection.mutable.Map[String, List[Imagem]]()
 
-  def apply(caminho: Texto): Imagem = {
+  def apply(caminho: String): Imagem = {
     imagens.get(caminho).getOrElse {
       Try {
         ImageIO.read(new File(caminho))
@@ -28,7 +28,7 @@ object Imagem {
     }
   }
 
-  def fatie(caminho: Texto, x: Inteiro, y: Inteiro): Lista[Imagem] = {
+  def fatie(caminho: String, x: Int, y: Int) = {
     val id = s"$caminho $x $y"
     val l = listas.getOrElse(id, {
       val img = Imagem(caminho).buffer
@@ -41,7 +41,7 @@ object Imagem {
       listas(id) = lista.toList
       listas(id)
     })
-    Lista(l)
+    List(l)
   }
 }
 
@@ -49,7 +49,7 @@ class Imagem(val buffer: BufferedImage, val caminho: String = "") {
   def largura = buffer.getWidth
   def altura = buffer.getHeight
 
-  def fatie(x: Inteiro, y: Inteiro): Lista[Imagem] = {
+  def fatie(x: Int, y: Int) {
     val id = s"$caminho $x $y"
     val l = Imagem.listas.getOrElse(id, {
       val img = buffer
@@ -62,7 +62,7 @@ class Imagem(val buffer: BufferedImage, val caminho: String = "") {
       Imagem.listas(id) = lista.toList
       Imagem.listas(id)
     })
-    Lista(l)
+    List(l)
   }
 
   private[this] def girar(g: Graphics2D, angulo: Double, x: Double, y: Double, scalaX: Double, scalaY: Double)(desenho: => Unit): Unit = {
@@ -72,7 +72,7 @@ class Imagem(val buffer: BufferedImage, val caminho: String = "") {
     g.setTransform(old)
   }
 
-  def desenhe(x: Real, y: Real, z: Inteiro, angulo: Real = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0): Unit = {
+  def desenhe(x: Double, y: Double, z: Int, angulo: Double = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0): Unit = {
     Desenho.incluir(z, g => {
       girar(g, angulo, x, y, scalaX, scalaY) {
         val largura = (buffer.getWidth * scalaX).toInt
@@ -84,7 +84,7 @@ class Imagem(val buffer: BufferedImage, val caminho: String = "") {
     })
   }
 
-  def desenhe_centralizado(x: Real, y: Real, z: Inteiro, angulo: Real = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0) = {
+  def desenhe_centralizado(x: Double, y: Double, z: Int, angulo: Double = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0) = {
     desenhe(x - buffer.getWidth / 2, y - buffer.getHeight / 2, z, angulo, scalaX, scalaY)
   }
 }

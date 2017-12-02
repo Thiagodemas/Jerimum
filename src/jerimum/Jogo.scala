@@ -94,17 +94,17 @@ object Jogo extends Runnable {
     }
   }
 
-  def distância(x1: Float, y1: Float, x2: Float, y2: Float) = {
+  def distância(x1: Double, y1: Double, x2: Double, y2: Double) = {
     Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
   }
   val distancia = distância _
 
-  def projeção_X(angulo: Float, valor: Float) = {
+  def projeção_X(angulo: Double, valor: Double) = {
     Math.sin(angulo * Math.PI / 180) * valor
 
   }
 
-  def projeção_Y(angulo: Float, valor: Float) = {
+  def projeção_Y(angulo: Double, valor: Double) = {
     -Math.cos(angulo * Math.PI / 180) * valor
   }
 

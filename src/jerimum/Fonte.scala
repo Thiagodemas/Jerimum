@@ -10,7 +10,7 @@ object Fonte {
 case class Fonte(tamanho: Int) {
   private[this] val font = new Font("Dialog", Font.BOLD, tamanho);
 
-  def desenhe_centralizado(msg: String, x: Float, y: Float, z: Int, c: Cor) = {
+  def desenhe_centralizado(msg: String, x: Double, y: Double, z: Int, c: Cor) = {
     Desenho.incluir(z, g => {
       g.setColor(c.color)
       g.setFont(font)
@@ -21,7 +21,7 @@ case class Fonte(tamanho: Int) {
 
   }
 
-  def desenhe(msg: String, x: Float, y: Float, z: Int, c: Cor) = {
+  def desenhe(msg: String, x: Double, y: Double, z: Int, c: Cor) = {
     Desenho.incluir(z, g => {
       g.setColor(c.color)
       g.setFont(font)
