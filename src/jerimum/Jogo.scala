@@ -4,13 +4,12 @@ import java.awt.Graphics2D
 
 import scala.util.{ Failure, Try }
 
-import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Real, Texto }
 
 object Jogo extends Runnable {
-  var titulo: Texto = "Sem Nome"
-  var largura: Inteiro = 640
-  var altura: Inteiro = 480
-  var fps: Inteiro = 60
+  var titulo: String = "Sem Nome"
+  var largura: Int = 640
+  var altura: Int = 480
+  var fps: Int = 60
   private[this] var display: Tela = _
   private[this] var running = false
   private[this] var thread: Thread = _
@@ -68,9 +67,9 @@ object Jogo extends Runnable {
     parar()
   }
 
-  def iniciar(titulo: Texto = "Potigol com Jerimum", largura: Inteiro = 640,
-              altura: Inteiro = 480, atualize: => Unit = {},
-              desenhe: => Unit = {}, fps: Inteiro = 60) = synchronized {
+  def iniciar(titulo: String = "Potigol com Jerimum", largura: Int = 640,
+              altura: Int = 480, atualize: => Unit = {},
+              desenhe: => Unit = {}, fps: Int = 60) = synchronized {
     this.titulo = titulo
     this.largura = largura
     this.altura = altura
@@ -95,17 +94,17 @@ object Jogo extends Runnable {
     }
   }
 
-  def distância(x1: Real, y1: Real, x2: Real, y2: Real): Real = {
+  def distância(x1: Float, y1: Float, x2: Float, y2: Float) = {
     Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
   }
   val distancia = distância _
 
-  def projeção_X(angulo: Real, valor: Real): Real = {
+  def projeção_X(angulo: Float, valor: Float) = {
     Math.sin(angulo * Math.PI / 180) * valor
 
   }
 
-  def projeção_Y(angulo: Real, valor: Real): Real = {
+  def projeção_Y(angulo: Float, valor: Float) = {
     -Math.cos(angulo * Math.PI / 180) * valor
   }
 
