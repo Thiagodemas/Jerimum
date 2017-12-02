@@ -1,8 +1,8 @@
 package jerimum
 
-import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Lista }
 
-case class Animacao(velocidade: Inteiro, imagens: Lista[Imagem]) {
+
+case class Animacao(velocidade: Int, imagens: List[Imagem]) {
   private[this] val inicio = System.currentTimeMillis()
   private[this] val tamanho = imagens.length
 
