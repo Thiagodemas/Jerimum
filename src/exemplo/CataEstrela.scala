@@ -1,12 +1,10 @@
 package exemplo
 import jerimum._
 import scala.util.Random
-import br.edu.ifrn.potigol.Potigolutil._
-import br.edu.ifrn.potigol.Matematica._
 
 object CataEstrela extends App {
 
-  case class Jogador(var x: Real, var y: Real) {
+  case class Jogador(var x: Double, var y: Double) {
     val imagem = Imagem("Nave.png")
     var placar = 0
     var vel_x, vel_y = 0.0
@@ -38,7 +36,7 @@ object CataEstrela extends App {
       vel_y = vel_y * 0.95
     }
 
-    def catar_estrelas(estrelas: Lista[Estrela]) = {
+    def catar_estrelas(estrelas: List[Estrela]) = {
       val catado = estrelas.selecione {
         estrela => Jogo.distância(x, y, estrela.x, estrela.y) >= 35
       }
@@ -64,7 +62,7 @@ object CataEstrela extends App {
   val imagem_fundo = Imagem("Space.png")
   val nave = Jogador(jogo.largura / 2, jogo.altura / 2)
   var tempo = 0.0
-  var estrelas = Lista(0, Estrela())
+  var estrelas = List(0, Estrela())
   var estado = "INICIO"
   val fonte = Fonte(16)
 
@@ -102,7 +100,7 @@ object CataEstrela extends App {
     if (Teclado.TECLA_PARA_ESQUERDA) nave.girar_esquerda
     if (Teclado.TECLA_PARA_CIMA) nave.acelerar
     // inserir novas estrelas estrelas se necessario
-    if (aleatório(100) < 4 && estrelas.tamanho < 25) {
+    if (Random(100) < 4 && estrelas.size < 25) {
       estrelas = Estrela() :: estrelas
     }
 
