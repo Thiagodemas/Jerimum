@@ -108,11 +108,11 @@ object Game extends Runnable {
     -Math.cos(angle * Math.PI / 180) * value
   }
 
-  val projecao_X = projection_X _
-  val projeçao_X = projection_X _
-  val projecão_X = projection_X _
-  val projecao_Y = projection_Y _
-  val projeçao_Y = projection_Y _
-  val projecão_Y = projection_Y _
+  val Projection_X = projection_X _
+  val projectionX = projection_X _
+  val PROJECTION_X = projection_X _
+  val Projection_Y = projection_Y _
+  val projectionY = projection_Y _
+  val PROJECTION_Y = projection_Y _
 
 }

@@ -1,64 +1,71 @@
 package exemplo
 import jerimum._
 import scala.util.Random
+import java.awt.Color
+import java.util.Random;
+import scala.util.Random;
 
-object CataEstrela extends App {
-/*
-  case class Jogador(var x: Double, var y: Double) {
-    val imagem = Imagem("Nave.png")
-    var placar = 0
+
+object CatchTheStars extends App {
+
+  case class Player(var x: Double, var y: Double) {
+    val image = Image("Nave.png")
+    var score = 0
     var vel_x, vel_y = 0.0
-    var angulo = 0.0
+    var angle = 0.0
 
-    def desenhe() = {
-      imagem.desenhe_centralizado(x, y, 3, angulo)
+    def draw() = {
+      image.centralized_draw(x, y, 3, angle)
     }
 
-    def girar_direita() = {
-      angulo = angulo + 5.0
+    def rotate_right() = {
+      angle = angle + 5.0
     }
 
-    def girar_esquerda() = {
-      angulo = angulo - 5.0
+    def rotate_left() = {
+      angle = angle - 5.0
     }
 
-    def acelerar() = {
-      vel_x = vel_x + Jogo.projeção_X(angulo, 0.5)
-      vel_y = vel_y + Jogo.projeção_Y(angulo, 0.5)
+    def accelerate() = {
+      vel_x = vel_x + Game.Projection_X(angle, 0.5)
+      vel_y = vel_y + Game.Projection_Y(angle, 0.5)
     }
 
-    def mover() = {
+    def move() = {
       x = x + vel_x
       y = y + vel_y
-      x = (jogo.largura + x) % jogo.largura
-      y = (jogo.altura + y) % jogo.altura
+      x = (game.width + x) % game.width
+      y = (game.height + y) % game.height
       vel_x = vel_x * 0.95
       vel_y = vel_y * 0.95
     }
 
-    def catar_estrelas(estrelas: List[Estrela]) = {
-      val catado = estrelas.selecione {
-        estrela => Jogo.distância(x, y, estrela.x, estrela.y) >= 35
+    def catch_the_stars(stars: List[Star]) = {
+      val caught = stars.select {
+        star => Game.distance(x, y, star.x, star.y) >= 35
       }
-      val n = estrelas.size - catado.size
-      placar = placar + n * 10
-      catado
+      val n = stars.size - caught.size
+      score = score + n * 10
+      caught
     }
   }
 
-  case class Estrela() {
-    val x = aleatório(jogo.largura)
-    val y = aleatório(jogo.altura)
-    val cor = Cor(aleatório(216) + 40, aleatório(216) + 40, aleatório(216) + 40)
-    val imagens = Imagem.fatie("Estrela.png", 25, 25)
-    val i = aleatório(imagens.tamanho)
+  case class Star() {
+    val r = scala.util.Random
+    val x = r.nextInt(game.width)
+    val y = r.nextInt(game.height)
+    val color = ColorF(r.nextInt(216) + 40, r.nextInt(216) + 40, r.nextInt(216) + 40)
+    val images = Image.fatie("Estrela.png", 25, 25)
+    val i = r.nextInt(images.size)
 
-    def desenhe() = {
-      val imagem = imagens((Relogio.milisegundos / 100 + i) % imagens.tamanho)
-      imagem.desenhe_centralizado(x, y, 1)
+/*    
+    
+    def draw() = {
+      val image = images((Clock.milisegundos / 100 + i) % images.size)
+      image.centralized_draw(x, y, 1)
     }
   }
-
+  
   val imagem_fundo = Imagem("Space.png")
   val nave = Jogador(jogo.largura / 2, jogo.altura / 2)
   var tempo = 0.0
@@ -130,4 +137,6 @@ object CataEstrela extends App {
   def atualize_fim() = {}
 
   jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)
-*/}
+*/
+  
+  }
