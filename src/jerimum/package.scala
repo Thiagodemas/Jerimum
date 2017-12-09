@@ -1,6 +1,6 @@
 
 package object jerimum {
-  val jogo = Jogo
+  val jogo = Game
   val mouse = Mouse
   val teclado = Teclado
   val relógio = Relogio

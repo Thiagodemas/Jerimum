@@ -5,7 +5,7 @@ import java.awt.{ Graphics2D, RenderingHints }
 import scala.collection.SortedMap
 
 
-object Desenho {
+object Draw {
   private[this] val vazia = SortedMap[Int, List[Graphics2D => Unit]]()
   private[this] var camadas = vazia
   private[this] def todos = camadas.values.flatten
@@ -14,7 +14,7 @@ object Desenho {
     RenderingHints.KEY_TEXT_ANTIALIASING,
     RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB)
 
-  def desenhe(g: Graphics2D): Unit = {
+  def draw(g: Graphics2D): Unit = {
     g match {
       case g: Graphics2D =>
         g.setRenderingHints(rh)
