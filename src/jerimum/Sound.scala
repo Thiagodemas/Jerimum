@@ -2,13 +2,13 @@ package jerimum
 
 
 
-case class Som(var arquivo: String) {
+case class Sound(var file: String) {
   def toque: Unit = ()
 }
 
-case class Musica(var arquivo: String) {
-  def toque(loop: Boolean = false): Unit = {
-    //    Musica._musica = this
+case class Music(var file: String) {
+  def touch(loop: Boolean = false): Unit = {
+    //    Music._music = this
   }
   def tocando: Boolean = false
   def pare: Unit = ()
@@ -16,8 +16,8 @@ case class Musica(var arquivo: String) {
   def pausado: Boolean = false
 }
 
-object Musica {
-  private var _musica: Option[Musica] = None
-  def musica_atual: Option[Musica] = _musica
-  def música_atual = musica_atual
+object Music {
+  private var _music: Option[Music] = None
+  def current_music: Option[Music] = _music
+  def current_Music = current_music
 }

@@ -3,7 +3,7 @@ import jerimum._
 import scala.util.Random
 
 object CataEstrela extends App {
-
+/*
   case class Jogador(var x: Double, var y: Double) {
     val imagem = Imagem("Nave.png")
     var placar = 0
@@ -130,4 +130,4 @@ object CataEstrela extends App {
   def atualize_fim() = {}
 
   jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)
-}
+*/}

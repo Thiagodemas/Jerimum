@@ -5,17 +5,17 @@ import java.awt.event.{ MouseEvent, MouseListener, MouseMotionListener }
 
 
 object Mouse extends MouseListener with MouseMotionListener {
-  private[this] val botoes = new Array[Boolean](4)
+  private[this] val buttons = new Array[Boolean](4)
   private[this] var _x, _y: Int = 0
-  def BOTAO_ESQUERDO: Boolean = botoes(1)
-  def BOTAO_DIREITO: Boolean = botoes(3)
+  def LEFT_BUTTON: Boolean = buttons(1)
+  def RIGHT_BUTTON: Boolean = buttons(3)
 
-  private[this] def update(e: MouseEvent, valor: Boolean) = {
-    val botao = e.getButton()
-    if (botao == MouseEvent.BUTTON1)
-      botoes(1) = valor
-    if (botao == MouseEvent.BUTTON3)
-      botoes(3) = valor
+  private[this] def update(e: MouseEvent, value: Boolean) = {
+    val button = e.getButton()
+    if (button == MouseEvent.BUTTON1)
+      buttons(1) = value
+    if (button == MouseEvent.BUTTON3)
+      buttons(3) = value
   }
 
   override def mousePressed(e: MouseEvent) = this(e) = true

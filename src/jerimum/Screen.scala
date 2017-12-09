@@ -5,15 +5,15 @@ import java.awt.{ Canvas, Dimension }
 
 import javax.swing.JFrame
 
-class Tela(var titulo: String, var largura: Int, var altura: Int) {
-  private[this] val dim = new Dimension(largura, altura)
+class Tela(var title: String, var width: Int, var height: Int) {
+  private[this] val dim = new Dimension(width, height)
   val canvas = new Canvas() {
     setPreferredSize(dim)
     setMaximumSize(dim)
     setMinimumSize(dim)
     setFocusable(false)
   }
-  val frame = new JFrame(titulo) {
+  val frame = new JFrame(title) {
     setIconImage(Imagem("potigol.png").buffer)
     setSize(dim)
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
