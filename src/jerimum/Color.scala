@@ -3,23 +3,23 @@ package jerimum
 import java.awt.Color
 
 
-case class Cor(var vermelho: Int, var verde: Int, var azul:Int) {
-  def color = new Color(vermelho, verde, azul)
+case class ColorF(var red: Int, var green: Int, var blue:Int) {
+  def color = new Color(red, green, blue)
   def this(color: Color) = this(color.getRed, color.getGreen, color.getBlue)
 }
 
-object Cor {
-  val AMARELO = new Cor(Color.yellow)
-  val AZUL = new Cor(Color.blue)
-  val BRANCO = new Cor(Color.white)
-  val CIANO = new Cor(Color.cyan)
-  val CINZA = new Cor(Color.gray)
-  val CINZA_CLARO = new Cor(Color.lightGray)
-  val CINZA_ESCURO = new Cor(Color.darkGray)
-  val LARANJA = new Cor(Color.orange)
-  val MAGENTA = new Cor(Color.magenta)
-  val PRETO = new Cor(Color.black)
-  val ROSA = new Cor(Color.pink)
-  val VERDE = new Cor(Color.green)
-  val VERMELHO = new Cor(Color.red)
+object ColorF {
+  val YELLOW = new ColorF(Color.yellow)
+  val BLUE = new ColorF(Color.blue)
+  val WHITE = new ColorF(Color.white)
+  val CYAN = new ColorF(Color.cyan)
+  val GRAY = new ColorF(Color.gray)
+  val LIGHT_GRAY= new ColorF(Color.lightGray)
+  val DARK_GRAY = new ColorF(Color.darkGray)
+  val ORANGE = new ColorF(Color.orange)
+  val MAGENTA = new ColorF(Color.magenta)
+  val BLACK = new ColorF(Color.black)
+  val PINK = new ColorF(Color.pink)
+  val GREEN = new ColorF(Color.green)
+  val RED = new ColorF(Color.red)
 }

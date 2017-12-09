@@ -1,12 +1,12 @@
 
 package object jerimum {
-  val jogo = Game
+  val game = Game
   val mouse = Mouse
-  val teclado = Teclado
-  val relógio = Relogio
-  val relogio = Relogio
-  val Relógio = Relogio
-  val cor = Cor
-  type Música = Musica
-  val Música = Musica
+  val keyboard = Keyboard
+  val Clock1 = Clock
+  val Clock2 = Clock
+  val Clock3 = Clock
+  val color = ColorF
+  type sound = Sound
+  val music = Music
 }

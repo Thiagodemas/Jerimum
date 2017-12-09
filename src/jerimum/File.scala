@@ -3,8 +3,8 @@ package jerimum
 
 import scala.io.Source
 
-object Arquivo {
-  def leia(caminho: String) {
-    List(Source.fromFile(caminho).getLines().toList)
+object File {
+  def read(road: String) {
+    List(Source.fromFile(road).getLines().toList)
   }
 }

@@ -3,26 +3,26 @@ package jerimum
 
 import java.awt.Font
 
-object Fonte {
+object Fonts {
 
 }
 
-case class Fonte(tamanho: Int) {
-  private[this] val font = new Font("Dialog", Font.BOLD, tamanho);
+case class Fonts(size: Int) {
+  private[this] val font = new Font("Dialog", Font.BOLD, size);
 
-  def desenhe_centralizado(msg: String, x: Double, y: Double, z: Int, c: Cor) = {
-    Draw.incluir(z, g => {
+  def draw_centered(msg: String, x: Double, y: Double, z: Int, c: ColorF) = {
+    Draw.include(z, g => {
       g.setColor(c.color)
       g.setFont(font)
-      val largura = g.getFontMetrics.stringWidth(msg)
-      val altura = g.getFontMetrics.getHeight
-      g.drawString(msg, x.toInt - largura / 2, y.toInt - altura / 2)
+      val width = g.getFontMetrics.stringWidth(msg)
+      val height = g.getFontMetrics.getHeight
+      g.drawString(msg, x.toInt - width / 2, y.toInt - height / 2)
     })
 
   }
 
-  def desenhe(msg: String, x: Double, y: Double, z: Int, c: Cor) = {
-    Draw.incluir(z, g => {
+  def draw(msg: String, x: Double, y: Double, z: Int, c: ColorF) = {
+    Draw.include(z, g => {
       g.setColor(c.color)
       g.setFont(font)
       g.drawString(msg, x.toInt, y.toInt)

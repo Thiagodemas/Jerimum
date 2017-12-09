@@ -6,9 +6,9 @@ import scala.collection.SortedMap
 
 
 object Draw {
-  private[this] val vazia = SortedMap[Int, List[Graphics2D => Unit]]()
-  private[this] var camadas = vazia
-  private[this] def todos = camadas.values.flatten
+  private[this] val empty = SortedMap[Int, List[Graphics2D => Unit]]()
+  private[this] var layers = empty
+  private[this] def all = layers.values.flatten
 
   private[this] val rh = new RenderingHints(
     RenderingHints.KEY_TEXT_ANTIALIASING,
@@ -19,11 +19,11 @@ object Draw {
       case g: Graphics2D =>
         g.setRenderingHints(rh)
     }
-    todos.foreach(f => f(g))
-    camadas = vazia
+    all.foreach(f => f(g))
+    layers = empty
   }
 
-  def incluir(z: Int, funcao: Graphics2D => Unit) = {
-    camadas += z -> (funcao :: camadas.getOrElse(z, Nil))
+  def include(z: Int, function: Graphics2D => Unit) = {
+    layers += z -> (function :: layers.getOrElse(z, Nil))
   }
 }

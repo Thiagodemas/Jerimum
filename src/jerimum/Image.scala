@@ -73,7 +73,7 @@ class Image(val buffer: BufferedImage, val road: String = "") {
   }
 
   def draw(x: Double, y: Double, z: Int, angle: Double = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0): Unit = {
-    Draw.incluir(z, g => {
+    Draw.include(z, g => {
       girar(g, angle, x, y, scalaX, scalaY) {
         val width = (buffer.getWidth * scalaX).toInt
         val height = (buffer.getHeight * scalaY).toInt
