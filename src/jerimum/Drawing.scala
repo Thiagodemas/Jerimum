@@ -5,7 +5,7 @@ import java.awt.{ Graphics2D, RenderingHints }
 import scala.collection.SortedMap
 
 
-object Draw {
+object Drawing {
   private[this] val empty = SortedMap[Int, List[Graphics2D => Unit]]()
   private[this] var layers = empty
   private[this] def all = layers.values.flatten

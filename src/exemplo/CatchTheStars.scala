@@ -10,13 +10,13 @@ import com.sun.org.apache.bcel.internal.generic.Select
 object CatchTheStars extends App {
 
   case class Player(var x: Double, var y: Double) {
-    val img = Image("Spacecraft.png")
+    val image = Image("Spacecraft.png")
     var score = 0
     var vel_x, vel_y = 0.0
     var angle = 0.0
 
     def draw() = {
-      img.centralized_draw(x, y, 3, angle)
+      image.centralized_draw(x, y, 3, angle)
     }
 
     def rotate_right() = {
@@ -63,7 +63,7 @@ object CatchTheStars extends App {
     
     def draw() = {
       val image = images((Clock.milisegundos / 100 + i) % images.size)
-      image.centralized_draw(x, y, 1) //PROBLEMA N IDENTIFICADO 
+      image.centralized_draw(x, y, 1) 
       
     }
   }
@@ -71,7 +71,7 @@ object CatchTheStars extends App {
   val background = Image("Space.png")
   val spacecraft = Player(game.width / 2, game.height / 2)
   var time = 0.0
-  var stars = List(0, Star())
+  var stars = List[Star]()
   var state = "START"
   val font = Fonts(16)
 
@@ -85,6 +85,7 @@ object CatchTheStars extends App {
 
   def draw() = {
     background.draw(0, 0, 0)
+    println("Desenhando")
     state match {
       case "START"  => update_start
       case "PLAYING" => update_playing
@@ -114,7 +115,7 @@ object CatchTheStars extends App {
       stars = Star() :: stars
     }
 
-    stars = spacecraft.catch_the_stars(stars) // Catch the stars //PROBLEMA N IDENTIFICADO 
+    stars = spacecraft.catch_the_stars(stars) // Catch the stars 
     spacecraft.move // update player position
     time = time + 1.0 / 60.0 // increase time
     if (time.intValue() >= 30) {
@@ -125,7 +126,7 @@ object CatchTheStars extends App {
   def draw_player() = {
     spacecraft.draw
     for (star <- stars) {
-      star.draw //PROBLEMA N IDENTIFICADO 
+      star.draw 
       
     }
     font.draw(s"Placar: ${spacecraft.score}", 10, 20, 3, ColorF.YELLOW)

@@ -41,7 +41,7 @@ object Image {
       lists(id) = list.toList
       lists(id)
     })
-    List(l)
+    l
   }
 }
 
@@ -62,7 +62,7 @@ class Image(val buffer: BufferedImage, val road: String = "") {
       Image.lists(id) = list.toList
       Image.lists(id)
     })
-    List(l)
+    l
   }
 
   private[this] def spin(g: Graphics2D, angle: Double, x: Double, y: Double, scalaX: Double, scalaY: Double)(draw: => Unit): Unit = {
@@ -73,7 +73,7 @@ class Image(val buffer: BufferedImage, val road: String = "") {
   }
 
   def draw(x: Double, y: Double, z: Int, angle: Double = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0): Unit = {
-    Draw.include(z, g => {
+    Drawing.include(z, g => {
       spin(g, angle, x, y, scalaX, scalaY) {
         val width = (buffer.getWidth * scalaX).toInt
         val height = (buffer.getHeight * scalaY).toInt

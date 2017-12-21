@@ -11,7 +11,7 @@ case class Fonts(size: Int) {
   private[this] val font = new Font("Dialog", Font.BOLD, size);
 
   def draw_centered(msg: String, x: Double, y: Double, z: Int, c: ColorF) = {
-    Draw.include(z, g => {
+    Drawing.include(z, g => {
       g.setColor(c.color)
       g.setFont(font)
       val width = g.getFontMetrics.stringWidth(msg)
@@ -22,7 +22,7 @@ case class Fonts(size: Int) {
   }
 
   def draw(msg: String, x: Double, y: Double, z: Int, c: ColorF) = {
-    Draw.include(z, g => {
+    Drawing.include(z, g => {
       g.setColor(c.color)
       g.setFont(font)
       g.drawString(msg, x.toInt, y.toInt)

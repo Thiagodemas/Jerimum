@@ -14,7 +14,7 @@ object Game extends Runnable {
   private[this] var running = false
   private[this] var thread: Thread = _
 
-  private[this] var draw, update = () => {}
+  private[this] var dwg, update = () => {}
 
   private[this] def init() = {
     display = new Screen(title, width, height) {
@@ -33,7 +33,7 @@ object Game extends Runnable {
       case Some(strategy) => strategy.getDrawGraphics match {
         case g: Graphics2D =>
           g.clearRect(0, 0, width, height)
-          Draw.draw(g)
+          Drawing.draw(g)
           strategy.show
           g.dispose()
       }
@@ -54,7 +54,7 @@ object Game extends Runnable {
       last = now
       if (delta >= 1) {
         update()
-        drawing()
+        dwg()
         drawing()
         cycles += 1
         delta -= 1
@@ -75,7 +75,7 @@ object Game extends Runnable {
     this.height = height
     this.fps = fps
     this.update = update _
-    this.draw = draw _
+    this.dwg = draw _
     if (!running) {
       running = true
       thread = new Thread(this) {
