@@ -6,7 +6,7 @@ import scala.util.{ Failure, Try }
 
 
 object Game extends Runnable {
-  var title: String = "Sem Nome"
+  var title: String = "Unnamed"
   var width: Int = 640
   var height: Int = 480
   var fps: Int = 60
@@ -64,7 +64,7 @@ object Game extends Runnable {
         time = 0
       }
     }
-    parar()
+    stop()
   }
 
   def start(title: String = "Potigol com Jerimum", width: Int = 640,
@@ -84,7 +84,7 @@ object Game extends Runnable {
     }
   }
 
-  private[this] def parar() = synchronized {
+  private[this] def stop() = synchronized {
     if (running) {
       running = false
       Try(thread.join()) match {

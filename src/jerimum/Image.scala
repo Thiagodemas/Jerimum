@@ -65,7 +65,7 @@ class Image(val buffer: BufferedImage, val road: String = "") {
     List(l)
   }
 
-  private[this] def girar(g: Graphics2D, angle: Double, x: Double, y: Double, scalaX: Double, scalaY: Double)(draw: => Unit): Unit = {
+  private[this] def spin(g: Graphics2D, angle: Double, x: Double, y: Double, scalaX: Double, scalaY: Double)(draw: => Unit): Unit = {
     val old = g.getTransform()
     if (angle != 0.0) g.rotate(Math.toRadians(angle), x + buffer.getWidth / 2, y + buffer.getHeight / 2)
     draw
@@ -74,7 +74,7 @@ class Image(val buffer: BufferedImage, val road: String = "") {
 
   def draw(x: Double, y: Double, z: Int, angle: Double = 0.0, scalaX: Double = 1.0, scalaY: Double = 1.0): Unit = {
     Draw.include(z, g => {
-      girar(g, angle, x, y, scalaX, scalaY) {
+      spin(g, angle, x, y, scalaX, scalaY) {
         val width = (buffer.getWidth * scalaX).toInt
         val height = (buffer.getHeight * scalaY).toInt
         val deltaX = if (width < 0) -width else 0
