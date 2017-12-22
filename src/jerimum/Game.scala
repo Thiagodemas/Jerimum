@@ -67,7 +67,7 @@ object Game extends Runnable {
     stop()
   }
 
-  def start(title: String = "Potigol com Jerimum", width: Int = 640,
+  def start(title: String = "Potigol with Jerimum", width: Int = 640,
               height: Int = 480, update: => Unit = {},
               draw: => Unit = {}, fps: Int = 60) = synchronized {
     this.title = title

@@ -5,6 +5,7 @@ import java.awt.Color
 import java.util.Random;
 import scala.util.Random;
 import com.sun.org.apache.bcel.internal.generic.Select
+import sun.applet.resources.MsgAppletViewer_pt_BR
 
 
 object CatchTheStars extends App {
@@ -37,8 +38,8 @@ object CatchTheStars extends App {
       y = y + vel_y
       x = (game.width + x) % game.width
       y = (game.height + y) % game.height
-      vel_x = vel_x * 0.95
-      vel_y = vel_y * 0.95
+      vel_x = vel_x * 0.65
+      vel_y = vel_y * 0.65
     }
 
     def catch_the_stars(stars: List[Star]) = {
@@ -85,7 +86,8 @@ object CatchTheStars extends App {
 
   def draw() = {
     background.draw(0, 0, 0)
-    println("Desenhando")
+    spacecraft.draw()
+   
     state match {
       case "START"  => update_start
       case "PLAYING" => update_playing
@@ -96,9 +98,11 @@ object CatchTheStars extends App {
   // State start
   def update_start() = {
     if (Keyboard.KEY_I) state = "PLAYING"
+    
   }
 
   def draw_start() = {
+    
     val msg = "PRESS [I] TO GET STARTED"
     font.draw_centered(msg, game.width / 2, game.height / 2, 3, ColorF.YELLOW)
   }
@@ -106,7 +110,7 @@ object CatchTheStars extends App {
   // State Player
   def update_playing() = {
     val r = scala.util.Random
-    // eventos
+    
     if (Keyboard.RIGHT) spacecraft.rotate_right
     if (Keyboard.LEFT) spacecraft.rotate_left
     if (Keyboard.UP) spacecraft.accelerate
@@ -124,9 +128,10 @@ object CatchTheStars extends App {
   }
 
   def draw_player() = {
-    spacecraft.draw
+    spacecraft.draw()
+    
     for (star <- stars) {
-      star.draw 
+      star.draw() 
       
     }
     font.draw(s"Placar: ${spacecraft.score}", 10, 20, 3, ColorF.YELLOW)
@@ -141,7 +146,7 @@ object CatchTheStars extends App {
 
   def update_end() = {}
 
-  game.start("Catch the Stars", 640, 480, update, draw)
-
+  game.start("Catch the Stars", 640, 480, update(), draw())
+  
   
   }
